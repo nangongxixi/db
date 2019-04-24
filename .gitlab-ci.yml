@@ -1,0 +1,30 @@
+gen-doc:
+    script:
+        - composer require --prefer-dist apigen/apigen --dev
+        - rm -rf /home/xnjcw_branch/docs/composer/$(composer info -s | awk '$1=="name"{print $3}')
+        - mkdir -p /home/xnjcw_branch/docs/composer/$(composer info -s | awk '$1=="name"{print $3}')
+        - vendor/bin/apigen generate -s src/ -d /home/xnjcw_branch/docs/composer/$(composer info -s | awk '$1=="name"{print $3}')
+    stage: build
+    when: manual
+    tags:
+        - repos
+
+build-composer:
+    script:
+#        - sh -x /usr/local/sbin/buildComposerRepos $(composer info -N)
+        - sh -x /usr/local/sbin/buildComposerRepos $(composer info -s | awk '$1=="name"{print $3}')
+    stage: build
+    tags:
+        - repos
+    only:
+        - master
+
+rsync-repo:
+    script:
+        - sh -x /usr/local/sbin/rsyncGitRepo.sh myali
+    stage: build
+    tags:
+        - dev
+    only:
+        - tags
+        - master

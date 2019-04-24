@@ -1,0 +1,40 @@
+{
+  "name": "scalpel/db",
+  "description": "Database access components",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Scalpel",
+      "email": "373966902@qq.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "j\\db\\": "src/db",
+      "j\\mongo\\": "src/mongo",
+      "j\\model\\": "src/model"
+    }
+  },
+
+  "require": {
+    "php": ">=5.6.0",
+    "scalpel/core" : "*"
+  },
+
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    },
+    {"packagist": false}
+  ],
+
+  "config" : {
+    "secure-http" : false
+  },
+
+  "suggest": {
+    "lox/xhprof": "*"
+  }
+}
