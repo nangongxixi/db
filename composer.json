@@ -25,7 +25,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://packagist.phpcomposer.com"
+      "url": "https://packagist.laravel-china.org"
     },
     {"packagist": false}
   ],
@@ -36,5 +36,7 @@
 
   "suggest": {
     "lox/xhprof": "*"
-  }
+  },
+
+  "minimum-stability": "dev"
 }
